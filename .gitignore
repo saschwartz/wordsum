@@ -1,9 +1,9 @@
 # models
-.tar
-.gz
-.tar.gz
-.bin.gz
-.zip
+*.tar
+*.gz
+*.tar.gz
+*.bin.gz
+*.zip
 
 # Logs
 logs
