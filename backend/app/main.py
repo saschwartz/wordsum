@@ -18,11 +18,17 @@ def most_similar():
             'status':'error',
             'message': 'request body must contain list fields "positive" and "negative"'
         }), 400)
-    return (jsonify(model.most_similar(
-        positive=content['positive'],
-        negative=content['negative'],
-        topn=content.get('count', 5))
-    ), 200)
+    words = []
+    try:
+        words = model.most_similar(
+            positive=content['positive'],
+            negative=content['negative'],
+            topn=content.get('count', 5)
+        )
+        return (jsonify(words), 200)
+    except (KeyError, ValueError) as e:
+        app.logger.error(e)
+        return (jsonify([]), 200)
 
 if __name__ == '__main__':
     app.run(debug=os.getenv('FLASK_DEBUG') is not None, port=os.getenv('FLASK_PORT', 8000), host='0.0.0.0')
