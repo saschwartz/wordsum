@@ -1,7 +1,10 @@
 import os
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from model import model
+
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/most_similar', methods=['POST'])
 def most_similar():
@@ -18,7 +21,7 @@ def most_similar():
     return (jsonify(model.most_similar(
         positive=content['positive'],
         negative=content['negative'],
-        topn=content.get('topn', 5))
+        topn=content.get('count', 5))
     ), 200)
 
 if __name__ == '__main__':

@@ -19,7 +19,7 @@ export default new Router({
     },
     {
       path: '*',
-      name: 'wordsum',
+      name: 'all',
       component: Wordsum
     }
   ]
