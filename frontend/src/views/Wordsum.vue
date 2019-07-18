@@ -37,8 +37,6 @@ export default {
           negative.push(tokens[i])
         }
       }
-      console.log(tokens)
-      console.log({ positive, negative })
       return { positive, negative }
     }
   },
@@ -60,3 +58,24 @@ export default {
   }
 }
 </script>
+
+<style lang='scss'>
+@import '~@/styles/fonts';
+@import '~@/styles/layout';
+@import '~@/styles/variables';
+
+input:focus {
+  outline-width: 0;
+}
+
+input {
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+  font-size: 1.5rem;
+  height: 3rem;
+  border: solid 2px $theme-secondary-color;
+  border-radius: 10px;
+}
+
+</style>
