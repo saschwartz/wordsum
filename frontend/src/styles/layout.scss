@@ -1,0 +1,32 @@
+/* global layout styling */
+
+@import '~@/styles/variables';
+
+h1, h2, h3, h4, h5 {
+  color: $theme-primary-color;
+}
+
+hr {
+  height: 1px;
+  color: $theme-secondary-color;
+  background-color: $theme-secondary-color;
+  border: none;
+}
+
+/* global link styling */
+a {
+  color: $theme-secondary-color;
+}
+a:hover {
+  color: lighten($theme-secondary-color, 15%);
+}
+
+html, body {
+  height: 100%;
+}
+
+// don't want any padding
+body {
+  margin: 0;
+  padding: 0;
+}

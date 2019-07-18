@@ -1,0 +1,9 @@
+/* global theme styling */
+
+$theme-primary-color: #000000;
+$theme-secondary-color: #88C0D0 ;
+
+:export {
+  themePrimaryColor: $theme-primary-color;
+  themeSecondaryColor: $theme-secondary-color;
+}
