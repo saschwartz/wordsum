@@ -5,8 +5,10 @@ services:
     environment:
       FLASK_PORT: 8000
       FLASK_DEBUG: "true"
+      ENVIRONMENT: "test"
     ports:
       - 8000:8000
     volumes:
       - ./app:/usr/src/wordsum/dev/app
+      - ./models:/usr/src/wordsum/dev/models
     command: python /usr/src/wordsum/dev/app/main.py
