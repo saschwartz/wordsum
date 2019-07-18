@@ -4,6 +4,7 @@ services:
     build: .
     environment:
       FLASK_PORT: 8000
+      FLASK_DEBUG: "true"
     ports:
       - 8000:8000
     volumes:
