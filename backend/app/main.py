@@ -3,16 +3,11 @@ from flask import Flask, request, jsonify
 from model import model
 app = Flask(__name__)
 
-model = None
-
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
-
 @app.route('/most_similar', methods=['POST'])
 def most_similar():
-    content = request.get_json(silent=True)
-    if ('positive' not in content or
+    content = request.get_json()
+    if (not content or
+        'positive' not in content or
         'negative' not in content or
         type(content['positive']) is not list or
         type(content['negative']) is not list):
