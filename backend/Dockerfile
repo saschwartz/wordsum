@@ -1,9 +1,12 @@
 FROM python:3
 
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir /usr/src/wordsum
+WORKDIR /usr/src/wordsum
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
-COPY app app
+RUN mkdir /usr/src/wordsum/production
+COPY app production/app
 
-CMD ["python", "app/main.py"]
+EXPOSE 8000 8000
+
+CMD ["python", "production/app/main.py"]
