@@ -1,7 +1,9 @@
 /* global theme styling */
 
 $theme-primary-color: #000000;
-$theme-secondary-color: #88C0D0 ;
+$theme-secondary-color: #88C0D0;
+$theme-success-color: #A3BE8C;
+$theme-error-color: #BF616A;
 
 :export {
   themePrimaryColor: $theme-primary-color;

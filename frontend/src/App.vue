@@ -47,7 +47,7 @@ export default {
 }
 
 #app {
-  background: rgba($theme-secondary-color, 0.8);
+  background: rgba($theme-secondary-color, 0.2);
 }
 
 #nav-container {
