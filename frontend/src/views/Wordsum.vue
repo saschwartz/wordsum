@@ -1,7 +1,8 @@
 <template lang='pug'>
-  div
+  div#wordsum
     p Input a word equation, for example "king + woman - man", to see the most similar words as calculated by word2vec.
-    input(v-model='wordInput')
+    div#equation-container
+      input(v-model='wordInput')
     ul
       li(v-for='word in mostSimilar') {{ word[0] }} (score:  {{ parseFloat(word[1]).toFixed(3) }} )
 </template>
@@ -21,7 +22,7 @@ export default {
     wordEquation: function () {
       let positive = []
       let negative = []
-      let tokens = this.wordInput.split(' ')
+      let tokens = this.wordInput.split(' ').filter((x) => x.length > 0)
       let add = true
       let subtract = false
       for (let i = 0; i < tokens.length; i++) {
@@ -64,18 +65,29 @@ export default {
 @import '~@/styles/layout';
 @import '~@/styles/variables';
 
-input:focus {
-  outline-width: 0;
-}
-
-input {
+#wordsum {
   width: 100%;
-  margin: 10px;
-  padding: 10px;
-  font-size: 1.5rem;
-  height: 3rem;
-  border: solid 2px $theme-secondary-color;
-  border-radius: 10px;
+
+  input:focus {
+    outline-width: 0;
+  }
+
+  #equation-container {
+    width: 100%;
+
+    input {
+      padding: 20px;
+      width: 100%;
+      font-size: 1.75rem;
+      height: 3.5rem;
+      color: $theme-secondary-color;
+      border: solid 2px $theme-secondary-color;
+      border-radius: 10px;
+      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+      -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+      box-sizing: border-box;         /* Opera/IE 8+ */
+    }
+  }
 }
 
 </style>
