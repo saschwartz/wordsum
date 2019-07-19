@@ -15,7 +15,6 @@
 
 <script>
 import { apiClient } from '@/api'
-import styles from '@/styles/variables.scss'
 
 export default {
   name: 'wordsum',
