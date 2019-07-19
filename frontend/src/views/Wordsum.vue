@@ -4,7 +4,7 @@
     div#equation-container
       input(v-model='wordInput')
     div(v-if='mostSimilar.length > 0')#similar-results
-      h4 Top Results
+      h3 Top Results
       div#result(v-for='word in mostSimilar')
         span#result-word {{ word[0] }}
 </template>
@@ -92,10 +92,12 @@ export default {
   }
 
   #similar-results {
+    margin-top: 30px;
     #result {
       #result-word {
         color: $theme-secondary-color;
         font-weight: bold;
+        font-size: 1.2rem;
       }
     }
   }
