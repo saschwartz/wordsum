@@ -3,8 +3,10 @@
     p Input a word equation, for example "king + woman - man", to see the most similar words as calculated by word2vec.
     div#equation-container
       input(v-model='wordInput')
-    ul
-      li(v-for='word in mostSimilar') {{ word[0] }} (score:  {{ parseFloat(word[1]).toFixed(3) }} )
+    div(v-if='mostSimilar.length > 0')#similar-results
+      h4 Top Results
+      div#result(v-for='word in mostSimilar')
+        span#result-word {{ word[0] }}
 </template>
 
 <script>
@@ -86,6 +88,15 @@ export default {
       -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
       -moz-box-sizing: border-box;    /* Firefox, other Gecko */
       box-sizing: border-box;         /* Opera/IE 8+ */
+    }
+  }
+
+  #similar-results {
+    #result {
+      #result-word {
+        color: $theme-secondary-color;
+        font-weight: bold;
+      }
     }
   }
 }
