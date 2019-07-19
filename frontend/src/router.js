@@ -17,10 +17,6 @@ export default new Router({
       name: 'about',
       component: About
     },
-    {
-      path: '*',
-      name: 'all',
-      component: Wordsum
-    }
+    { path: '*', redirect: '/wordsum' }
   ]
 })
