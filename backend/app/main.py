@@ -25,7 +25,7 @@ def most_similar():
             negative=content['negative'],
             topn=content.get('count', 5)
         )
-        return (jsonify(words), 200)
+        return (jsonify([w for w in words if w[0] not in content['positive'] and w[0] not in content['negative']]), 200)
     except (KeyError, ValueError) as e:
         app.logger.error(e)
         return (jsonify([]), 200)
