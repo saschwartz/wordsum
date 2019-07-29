@@ -1,9 +1,16 @@
 <template lang='pug'>
-  div
-    p Input a word equation, for example "king + woman - man", to see the most similar words as calculated by word2vec.
-    input(v-model='wordInput')
-    ul
-      li(v-for='word in mostSimilar') {{ word[0] }} (score:  {{ parseFloat(word[1]).toFixed(3) }} )
+  div#wordsum
+    div#instructions
+      p Try make a word equation that sums up to the target word!
+      p For example: 
+        span#example-equation &nbsp king + woman - man = queen
+    div#equation-container(:class='equationClass')
+      input(v-model='wordInput', placeholder='e.g. king + woman - man', :class='equationClass')
+      div(:class='equationClass')#equals &nbsp = {{ target }}
+    div(v-if='mostSimilar.length > 0')#similar-results
+      span Top Result: &nbsp
+      span#result-word(v-for='(word, idx) in mostSimilar') {{ word[0] }}
+        span(v-if='idx < mostSimilar.length - 1') ,&nbsp &nbsp
 </template>
 
 <script>
@@ -14,14 +21,17 @@ export default {
   data () {
     return {
       mostSimilar: [],
-      wordInput: ''
+      wordInput: '',
+      target: 'queen',
+      availableTargets: ['surgeon', 'paediatrician', 'dentist', 'ambulance', 'mother', 'father'],
+      equationClass: 'pending'
     }
   },
   computed: {
     wordEquation: function () {
       let positive = []
       let negative = []
-      let tokens = this.wordInput.split(' ')
+      let tokens = this.wordInput.split(' ').filter((x) => x.length > 0)
       let add = true
       let subtract = false
       for (let i = 0; i < tokens.length; i++) {
@@ -53,7 +63,17 @@ export default {
   },
   watch: {
     wordEquation () {
-      this.getMostSimilar({ positive: this.wordEquation.positive, negative: this.wordEquation.negative, count: 5 })
+      this.getMostSimilar({ positive: this.wordEquation.positive, negative: this.wordEquation.negative, count: 1 })
+    },
+    mostSimilar () {
+      let targetInInput = this.wordEquation.positive.includes(this.target) || this.wordEquation.negative.includes(this.target)
+      if (Array.from(this.mostSimilar, x => x[0].toLowerCase()).includes(this.target) && !targetInInput) {
+        this.equationClass = 'success'
+      } else if (targetInInput) {
+        this.equationClass = 'error'
+      } else {
+        this.equationClass = 'pending'
+      }
     }
   }
 }
@@ -64,18 +84,67 @@ export default {
 @import '~@/styles/layout';
 @import '~@/styles/variables';
 
-input:focus {
-  outline-width: 0;
-}
-
-input {
+#wordsum {
   width: 100%;
-  margin: 10px;
-  padding: 10px;
-  font-size: 1.5rem;
-  height: 3rem;
-  border: solid 2px $theme-secondary-color;
-  border-radius: 10px;
+
+  input:focus {
+    outline-width: 0;
+  }
+
+  #instructions {
+    line-height: 1.2rem;
+    font-size: 1.2rem;
+    #example-equation {
+      color: $theme-secondary-color;
+      font-weight: bold;
+    }
+  }
+
+  .success {
+    color: $theme-success-color;
+  }
+  .pending {
+    color: $theme-secondary-color;
+  }
+  .error {
+    color: $theme-error-color;
+  }
+
+  #equation-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+    input {
+      padding: 20px;
+      max-width: 500px;
+      flex: 1;
+      height: 3.5rem;
+      font-size: 1.3rem;
+      border: solid 2px;
+      border-radius: 10px;
+      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+      -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+      box-sizing: border-box;         /* Opera/IE 8+ */
+    }
+
+    #equals {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+  }
+
+  #similar-results {
+    font-size: 1.2rem;
+    margin-top: 30px;
+    #result-word {
+      color: $theme-secondary-color;
+      font-weight: bold;
+    }
+  }
 }
 
 </style>

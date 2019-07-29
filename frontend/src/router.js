@@ -8,7 +8,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/wordsum',
       name: 'wordsum',
       component: Wordsum
     },
@@ -17,10 +17,6 @@ export default new Router({
       name: 'about',
       component: About
     },
-    {
-      path: '*',
-      name: 'all',
-      component: Wordsum
-    }
+    { path: '*', redirect: '/wordsum' }
   ]
 })

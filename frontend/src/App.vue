@@ -4,9 +4,6 @@
       div#main-content-inner
         div#page-content
           h1 Wordsum
-          p#tagline
-            | Exploring the additive properties of 
-            a(href='https://en.wikipedia.org/wiki/Word2vec', target='_blank') word2vec
           div#nav-container
             hr
             div#nav-links
@@ -47,7 +44,7 @@ export default {
 }
 
 #app {
-  background: rgba($theme-secondary-color, 0.8);
+  background: rgba($theme-secondary-color, 0.2);
 }
 
 #nav-container {
@@ -92,14 +89,6 @@ export default {
       padding-left: 3rem;
       padding-right: 3rem;
       margin-top: 30px;
-
-      h1 {
-        margin-bottom: 0px;
-      }
-
-      #tagline {
-        font-size: 0.9rem;
-      }
     }
   }
 }
