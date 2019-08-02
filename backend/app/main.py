@@ -31,4 +31,5 @@ def most_similar():
         return (jsonify([]), 200)
 
 if __name__ == '__main__':
-    app.run(debug=os.getenv('FLASK_DEBUG') is not None, port=os.getenv('FLASK_PORT', 8000), host='0.0.0.0')
+    production = os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine/')
+    app.run(debug=(not production), port=os.environ.get('FLASK_PORT', 8080), host='0.0.0.0')

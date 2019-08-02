@@ -20,17 +20,25 @@ This is possible because of the vector additive properties of word embeddings. T
 
 ### Backend
 
-The backend is a [Flask](https://palletsprojects.com/p/flask/) application run within [Docker](https://www.docker.com/).
+The backend is a [Flask](https://palletsprojects.com/p/flask/) application.
 
-To run locally, 
+To run locally with the Google Cloud SDK, ensure you have the [Google Cloud SDK](https://cloud.google.com/sdk/) installed. Then, run:
 
 ```bash
 cd backend
-docker-compose build
+CLOUDSDK_PYTHON="python2.7" dev_appserver.py app.yaml --port=8000
+```
+
+Alternatively, you can run locally with Docker using 
+
+```bash
+cd backend
 docker-compose up
 ```
 
-Note that the `app` and `models` directories are mapped in as volumes. Thus, the app will reload when you edit application code. Also, you must have a model present in the `models` directory for the app to run.
+Note that you must have a model present in the `models` directory for the app to run when using Docker. The Google Cloud SDK version will use a hosted version of the model, so you don't have to worry if running that way.
+
+The model file itself that is running in production can be found [here](https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit)
 
 ### Frontend
 

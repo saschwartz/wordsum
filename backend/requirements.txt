@@ -2,3 +2,4 @@ flask
 gunicorn 
 gensim
 flask-cors
+google-cloud-storage
