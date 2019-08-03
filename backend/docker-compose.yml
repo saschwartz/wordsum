@@ -8,7 +8,7 @@ services:
       FLASK_PORT: 8082
       FLASK_DEBUG: "true"
       ENVIRONMENT: "test"
-      LOCAL_MODEL_PATH: "/usr/src/wordsum/dev/models/GoogleNews-vectors-negative300.bin.gz"
+      LOCAL_MODEL_PATH: "/usr/src/wordsum/dev/models/GoogleNews-vectors-negative300-first100K.bin.gz"
     ports:
       - 8082:8082
     volumes:
