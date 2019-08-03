@@ -20,16 +20,7 @@ This is possible because of the vector additive properties of word embeddings. T
 
 ### Backend
 
-The backend is a [Flask](https://palletsprojects.com/p/flask/) application.
-
-To run locally with the Google Cloud SDK, ensure you have the [Google Cloud SDK](https://cloud.google.com/sdk/) installed. Then, run:
-
-```bash
-cd backend
-CLOUDSDK_PYTHON="python2.7" dev_appserver.py app.yaml --port=8000
-```
-
-Alternatively, you can run locally with Docker using 
+The backend is a [Flask](https://palletsprojects.com/p/flask/) application. You can run it with [Docker](https://hub.docker.com/) with:
 
 ```bash
 cd backend

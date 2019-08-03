@@ -1,5 +1,6 @@
 import os, sys
 import gensim
+from io import BytesIO
 from google.cloud import storage
 import logging
 
@@ -28,9 +29,11 @@ if gcs_model_bucket and gcs_model_path:
     bucket = storage_client.get_bucket(gcs_model_bucket)
     blob = bucket.blob(gcs_model_path)
     data = blob.download_as_string()
+    output = BytesIO()
+    output.write(data)
     logger.info('Loading GCS model file into gensim.')
     model = gensim.models.KeyedVectors.load_word2vec_format(
-        data,
+        output,
         binary=True,
         limit=100000
     )
