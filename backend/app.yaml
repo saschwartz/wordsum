@@ -4,6 +4,6 @@ entrypoint: gunicorn --chdir app --bind 0.0.0.0:8082 wsgi:app
 
 env_variables:
   GCS_MODEL_BUCKET: wordsum-models
-  GCS_MODEL_PATH: GoogleNews-vectors-negative300-first100K.bin.gz
+  GCS_MODEL_PATH: GoogleNews-vectors-negative300-first100K.bin
 
 instance_class: F4_HIGHMEM
