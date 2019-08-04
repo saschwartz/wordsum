@@ -4,8 +4,11 @@
       p Try make a word equation that sums up to the target word!
     div#input-container
       div#target-container
-        p Try make:
-          span#target &nbsp {{ target }}
+        div(v-if='target')
+          p Try make:
+            span#target &nbsp {{ target }}
+        div(v-else)
+          p You've completed all the target words! Try experimenting with other word equations.
       div#equation-container(:class='equationClass')
         input(v-model='wordInput', placeholder='e.g. king + woman - man', :class='equationClass')
         div(:class='equationClass')#equals &nbsp = {{ mostSimilar.length > 0 ? mostSimilar[0][0] : "??????" }}
@@ -28,8 +31,8 @@ export default {
       wordInput: '',
       target: 'queen',
       availableTargets: [
-        'surgeon', 'pediatrician', 'dentist', 'ambulance', 'mother', 'father', 'gynecologist',
-        'cardiologist'
+        'surgeon', 'pediatrician', 'dentist', 'ambulance', 'mother', 'father',
+        'cardiologist', 'psychiatrist', 'dermatologist', 
       ],
       equationClass: 'pending',
       equations: []
@@ -93,9 +96,11 @@ export default {
     mostSimilar () {
       if (Array.from(this.mostSimilar, x => x[0].toLowerCase()).includes(this.target) && !this.targetInInput) {
         this.equationClass = 'success'
-        this.equations.push(this.wordInput + ' = ' + this.target)
-        this.wordInput = ''
-        this.target = this.availableTargets.pop()
+        setTimeout(() => {
+          this.equations.push(this.wordInput + ' = ' + this.target)
+          this.wordInput = ''
+          this.target = this.availableTargets.pop()
+        }, 1000)
       } else if (this.targetInInput) {
         this.equationClass = 'error'
       } else {

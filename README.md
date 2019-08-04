@@ -40,7 +40,7 @@ To run locally,
 ```bash
 cd frontend
 yarn install
-yarn serve
+yarn run production    # you can use yarn run local if running against local backend
 ```
 
 
