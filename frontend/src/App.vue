@@ -86,6 +86,7 @@ export default {
     height: 100%;
 
     #page-content {
+      height: 100%;
       padding-left: 3rem;
       padding-right: 3rem;
       margin-top: 30px;

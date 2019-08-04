@@ -4,6 +4,10 @@
     p
     | This application was authored by 
     a(href='https://sebschwartz.me', target='_blank') Sebastian Schwartz
+    | . 
+    p
+    | The source lives 
+    a(href='https://github.com/saschwartz/wordsum', target='_blank') here
     | .
   
 </template>
