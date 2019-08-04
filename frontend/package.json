@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "NODE_ENV=local vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "inspect": "vue-cli-service inspect",
+    "deploy": "gsutil -m cp -r dist/** gs://wordsum.sebschwartz.me"
   },
   "dependencies": {
     "axios": "^0.19.0",

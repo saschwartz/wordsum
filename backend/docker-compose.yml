@@ -1,13 +1,16 @@
 version: '3'
 services:
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
     environment:
-      FLASK_PORT: 8000
+      FLASK_PORT: 8082
       FLASK_DEBUG: "true"
       ENVIRONMENT: "test"
+      LOCAL_MODEL_PATH: "/usr/src/wordsum/dev/models/GoogleNews-vectors-negative300-first100K.bin.gz"
     ports:
-      - 8000:8000
+      - 8082:8082
     volumes:
       - ./app:/usr/src/wordsum/dev/app
       - ./models:/usr/src/wordsum/dev/models

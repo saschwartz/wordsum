@@ -1,0 +1,2 @@
+rsync -rave ssh * wordsum.us-central1-a.personal-site-236718:/opt/applocal/wordsum/backend
+gcloud compute ssh wordsum --command 'cd /opt/applocal/wordsum/backend && /usr/local/bin/docker-compose up -d --force-recreate --build'
