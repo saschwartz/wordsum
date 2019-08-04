@@ -32,7 +32,7 @@ export default {
       target: 'queen',
       availableTargets: [
         'surgeon', 'pediatrician', 'dentist', 'ambulance', 'mother', 'father',
-        'cardiologist', 'psychiatrist', 'dermatologist', 'neurologist'
+        'cardiologist', 'psychiatrist', 'dermatologist', 'neurologist', 'slower', 'faster'
       ],
       equationClass: 'pending',
       equations: []
