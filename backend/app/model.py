@@ -35,7 +35,7 @@ if gcs_model_bucket and gcs_model_path:
     model = gensim.models.KeyedVectors.load_word2vec_format(
         output,
         binary=True,
-        limit=70000
+        limit=75000
     )
 
 if not model:
